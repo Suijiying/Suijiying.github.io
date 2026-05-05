@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suijiying的个人网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, 'Segoe UI', 'Noto Sans', system-ui, monospace;
+            line-height: 1.5;
+            color: #1a2a14;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: transparent;
+            padding: 0;
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #2a4a1a;
+            letter-spacing: -0.3px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2e6;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #3c6527;
+            margin-top: 8px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eae5db;
+            margin: 1.2rem 0;
+        }
+
+        .intro {
+            font-size: 1rem;
+            color: #3a5530;
+            margin: 1rem 0;
+        }
+
+        .link-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .wiki-link, .bili-link {
+            display: inline-block;
+            background: #2a4a1a;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .bili-link {
+            background: #00a1d6;
+        }
+
+        .wiki-link:hover {
+            background: #1e3812;
+        }
+
+        .bili-link:hover {
+            background: #0084b3;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1.2rem 0;
+        }
+
+        .info-item {
+            background: #f8f7f3;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .info-label {
+            font-size: 0.7rem;
+            color: #7c8b6e;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-weight: 500;
+            color: #2f4525;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.7rem;
+            color: #9aa98b;
+            text-align: center;
+            border-top: 1px solid #ece5d9;
+            padding-top: 1rem;
+        }
+
+        .small-link {
+            color: #6a7c59;
+            text-decoration: none;
+            border-bottom: 1px solid #d0d9c2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="name">Suijiying</div>
+        <div class="badge">巡查豁免者</div>
+
+        <div class="divider"></div>
+
+        <div class="intro">
+            ✦ Minecraft Wiki中文编辑者，目前初二<br>
+            ✦ 2017年入坑中国版，现玩Java版和基岩版
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">加入Wiki</div>
+                <div class="info-value">2025年2月13日</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">来自</div>
+                <div class="info-value">浙江杭州</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">B站</div>
+                <div class="info-value">随机应真帅</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">QQ</div>
+                <div class="info-value">3904498831</div>
+            </div>
+        </div>
+
+        <div class="link-group">
+            <a class="wiki-link" href="https://zh.minecraft.wiki/w/User:Suijiying" target="_blank" rel="noopener noreferrer">
+                查看完整 Wiki 用户页 →
+            </a>
+            <a class="bili-link" href="https://space.bilibili.com/3546732430363552" target="_blank" rel="noopener noreferrer">
+                哔哩哔哩空间 →
+            </a>
+        </div>
+
+        <div class="footer-note">
+            Suijiying的个人网页<br>
+            <a class="small-link" href="https://zh.minecraft.wiki/w/User:Suijiying" target="_blank">zh.minecraft.wiki/w/User:Suijiying</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
