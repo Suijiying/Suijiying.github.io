@@ -120,7 +120,6 @@
 </div>
 
 <script>
-    //文件
     const filenames = [
         "Sulfur Cube Acacia Log JE2.png",
         "Sulfur Cube Acacia Planks JE2.png",
@@ -311,16 +310,14 @@
         "Sulfur Cube Yellow Terracotta JE2.png"
     ];
 
-    // 更新统计
     document.getElementById('stats').innerHTML = `共 ${filenames.length} 个硫方怪`;
 
-    // 生成图片墙
     const gallery = document.getElementById('gallery');
     for (let name of filenames) {
         const div = document.createElement('div');
         div.className = 'gallery-item';
         div.innerHTML = `
-            <img src="images/${encodeURIComponent(name)}" alt="${name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3E❌%3C/text%3E%3C/svg%3E'">
+            <img src="images/${name}" alt="${name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3E❌%3C/text%3E%3C/svg%3E'">
             <p>${name.replace('Sulfur Cube ', '').replace('.png', '')}</p>
         `;
         gallery.appendChild(div);
