@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>硫方怪画廊</title>
+    <title>硫方怪画廊 主页分类</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -39,49 +39,48 @@
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #2a4a1a;
         }
 
-        .stats {
+        .sub {
             color: #7c8b6e;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .gallery {
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
         }
 
-        .gallery-item {
+        .cat-card {
             background: white;
-            border-radius: 12px;
-            padding: 0.5rem;
+            border-radius: 20px;
+            padding: 1.5rem 0.5rem;
             text-align: center;
-            transition: transform 0.1s ease;
+            text-decoration: none;
             border: 1px solid #eae5db;
+            transition: transform 0.1s ease, border-color 0.2s;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
+        .cat-card:hover {
+            transform: translateY(-3px);
             border-color: #8bb56a;
         }
 
-        .gallery-item img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
+        .cat-icon {
+            width: 64px;
+            height: 64px;
             object-fit: contain;
-            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
 
-        .gallery-item p {
-            font-size: 0.6rem;
-            color: #5a6b4e;
-            margin-top: 0.3rem;
-            word-break: break-word;
-            line-height: 1.2;
+        .cat-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2a4a1a;
         }
 
         .footer {
@@ -94,12 +93,19 @@
         }
 
         @media (max-width: 600px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-                gap: 0.5rem;
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.8rem;
             }
-            .gallery-item p {
-                font-size: 0.5rem;
+            .cat-card {
+                padding: 1rem 0.3rem;
+            }
+            .cat-icon {
+                width: 48px;
+                height: 48px;
+            }
+            .cat-name {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -107,221 +113,70 @@
 <body>
 <div class="container">
     <div class="header">
-        <a class="back-link" href="https://Suijiying.github.io">← 返回主页</a>
-        <h1>硫方怪展示</h1>
-        <div class="stats" id="stats"></div>
+        <a class="back-link" href="https://Suijiying.github.io">← 返回个人主页</a>
+        <h1>硫方怪画廊</h1>
+        <div class="sub">按原型分类</div>
     </div>
 
-    <div class="gallery" id="gallery"></div>
+    <div class="category-grid">
+        <a href="sulfur_cube_bouncy.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Oak_Log_JE2.png" alt="">
+            <div class="cat-name">弹性（橡胶球）</div>
+        </a>
+        <a href="sulfur_cube_regular.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Dirt_JE2.png" alt="">
+            <div class="cat-name">普通（足球）</div>
+        </a>
+        <a href="sulfur_cube_slow_bouncy.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Stone_JE2.png" alt="">
+            <div class="cat-name">缓慢弹性</div>
+        </a>
+        <a href="sulfur_cube_slow_flat.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Iron_Block_JE2.png" alt="">
+            <div class="cat-name">缓慢平移（药球）</div>
+        </a>
+        <a href="sulfur_cube_fast_flat.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Moss_Block_JE2.png" alt="">
+            <div class="cat-name">快速平移（高尔夫球）</div>
+        </a>
+        <a href="sulfur_cube_light.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_White_Wool_JE2.png" alt="">
+            <div class="cat-name">轻盈（沙滩球）</div>
+        </a>
+        <a href="sulfur_cube_fast_sliding.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Packed_Ice_JE2.png" alt="">
+            <div class="cat-name">快速滑行（冰球）</div>
+        </a>
+        <a href="sulfur_cube_slow_sliding.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Red_Mushroom_Block_JE2.png" alt="">
+            <div class="cat-name">缓慢滑行（冰壶）</div>
+        </a>
+        <a href="sulfur_cube_sticky.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Honeycomb_Block_JE2.png" alt="">
+            <div class="cat-name">黏性</div>
+        </a>
+        <a href="sulfur_cube_high_resistance.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Soul_Sand_JE2.png" alt="">
+            <div class="cat-name">高阻力</div>
+        </a>
+        <a href="sulfur_cube_explosive.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_TNT_JE1.png" alt="">
+            <div class="cat-name">爆炸</div>
+        </a>
+        <a href="sulfur_cube_hot.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Magma_Block_JE1.png" alt="">
+            <div class="cat-name">高温</div>
+        </a>
+        <a href="sulfur_cube_removed.html" class="cat-card">
+            <img class="cat-icon" src="images/Sulfur_Cube_Redstone_Block_JE2.png" alt="">
+            <div class="cat-name">已移除</div>
+        </a>
+    </div>
+
     <div class="footer">
-        Suijiying的个人网页<br>
-        硫方怪展示
+        Suijiying<br>
+        硫方怪画廊
     </div>
 </div>
-
-<script>
-    const filenames = [
-        "Sulfur_Cube_Acacia_Log_JE2.png",
-        "Sulfur_Cube_Acacia_Planks_JE2.png",
-        "Sulfur_Cube_Acacia_Wood_JE2.png",
-        "Sulfur_Cube_Andesite_JE2.png",
-        "Sulfur_Cube_Bamboo_Block_JE2.png",
-        "Sulfur_Cube_Bamboo_Mosaic_JE2.png",
-        "Sulfur_Cube_Bamboo_Planks_JE2.png",
-        "Sulfur_Cube_Birch_Log_JE2.png",
-        "Sulfur_Cube_Birch_Planks_JE2.png",
-        "Sulfur_Cube_Birch_Wood_JE2.png",
-        "Sulfur_Cube_Black_Concrete_JE2.png",
-        "Sulfur_Cube_Black_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Black_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Black_Terracotta_JE2.png",
-        "Sulfur_Cube_Blue_Concrete_JE2.png",
-        "Sulfur_Cube_Blue_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Blue_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Blue_Terracotta_JE2.png",
-        "Sulfur_Cube_Bricks_JE2.png",
-        "Sulfur_Cube_Brown_Concrete_JE2.png",
-        "Sulfur_Cube_Brown_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Brown_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Brown_Terracotta_JE2.png",
-        "Sulfur_Cube_Cherry_Log_JE2.png",
-        "Sulfur_Cube_Cherry_Planks_JE2.png",
-        "Sulfur_Cube_Cherry_Wood_JE2.png",
-        "Sulfur_Cube_Chiseled_Deepslate_JE2.png",
-        "Sulfur_Cube_Chiseled_Red_Sandstone_JE2.png",
-        "Sulfur_Cube_Chiseled_Sandstone_JE2.png",
-        "Sulfur_Cube_Chiseled_Stone_Bricks_JE2.png",
-        "Sulfur_Cube_Clay_JE2.png",
-        "Sulfur_Cube_Coal_Block_JE2.png",
-        "Sulfur_Cube_Coal_Ore_JE2.png",
-        "Sulfur_Cube_Coarse_Dirt_JE2.png",
-        "Sulfur_Cube_Cobbled_Deepslate_JE2.png",
-        "Sulfur_Cube_Cobblestone_JE2.png",
-        "Sulfur_Cube_Cracked_Deepslate_Bricks_JE2.png",
-        "Sulfur_Cube_Cracked_Deepslate_Tiles_JE2.png",
-        "Sulfur_Cube_Cracked_Stone_Bricks_JE2.png",
-        "Sulfur_Cube_Crimson_Hyphae_JE2.png",
-        "Sulfur_Cube_Crimson_Planks_JE2.png",
-        "Sulfur_Cube_Crimson_Stem_JE2.png",
-        "Sulfur_Cube_Cut_Red_Sandstone_JE2.png",
-        "Sulfur_Cube_Cut_Sandstone_JE2.png",
-        "Sulfur_Cube_Cyan_Concrete_JE2.png",
-        "Sulfur_Cube_Cyan_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Cyan_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Cyan_Terracotta_JE2.png",
-        "Sulfur_Cube_Dark_Oak_Log_JE2.png",
-        "Sulfur_Cube_Dark_Oak_Planks_JE2.png",
-        "Sulfur_Cube_Dark_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Deepslate_Bricks_JE2.png",
-        "Sulfur_Cube_Deepslate_Coal_Ore_JE2.png",
-        "Sulfur_Cube_Deepslate_Diamond_Ore_JE2.png",
-        "Sulfur_Cube_Deepslate_Emerald_Ore_JE2.png",
-        "Sulfur_Cube_Deepslate_JE2.png",
-        "Sulfur_Cube_Deepslate_Lapis_Lazuli_JE2.png",
-        "Sulfur_Cube_Deepslate_Redstone_Ore_JE2.png",
-        "Sulfur_Cube_Deepslate_Tiles_JE2.png",
-        "Sulfur_Cube_Diamond_Block_JE2.png",
-        "Sulfur_Cube_Diamond_Ore_JE2.png",
-        "Sulfur_Cube_Diorite_JE2.png",
-        "Sulfur_Cube_Dirt_JE2.png",
-        "Sulfur_Cube_Emerald_Block_JE2.png",
-        "Sulfur_Cube_Emerald_Ore_JE2.png",
-        "Sulfur_Cube_Granite_JE2.png",
-        "Sulfur_Cube_Grass_Block_JE2.png",
-        "Sulfur_Cube_Gravel_JE2.png",
-        "Sulfur_Cube_Gray_Concrete_JE2.png",
-        "Sulfur_Cube_Gray_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Gray_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Gray_Terracotta_JE2.png",
-        "Sulfur_Cube_Green_Concrete_JE2.png",
-        "Sulfur_Cube_Green_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Green_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Green_Terracotta_JE2.png",
-        "Sulfur_Cube_Honeycomb_Block_JE2.png",
-        "Sulfur_Cube_Iron_Block_JE2.png",
-        "Sulfur_Cube_Jungle_Log_JE2.png",
-        "Sulfur_Cube_Jungle_Planks_JE2.png",
-        "Sulfur_Cube_Jungle_Wood_JE2.png",
-        "Sulfur_Cube_Lapis_Lazuli_Block_JE2.png",
-        "Sulfur_Cube_Lapis_Lazuli_Ore_JE2.png",
-        "Sulfur_Cube_Light_Blue_Concrete_JE2.png",
-        "Sulfur_Cube_Light_Blue_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Light_Blue_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Light_Blue_Terracotta_JE2.png",
-        "Sulfur_Cube_Light_Gray_Concrete_JE2.png",
-        "Sulfur_Cube_Light_Gray_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Light_Gray_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Light_Gray_Terracotta_JE2.png",
-        "Sulfur_Cube_Lime_Concrete_JE2.png",
-        "Sulfur_Cube_Lime_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Lime_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Lime_Terracotta_JE2.png",
-        "Sulfur_Cube_Magenta_Concrete_JE2.png",
-        "Sulfur_Cube_Magenta_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Magenta_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Magenta_Terracotta_JE2.png",
-        "Sulfur_Cube_Mangrove_Log_JE2.png",
-        "Sulfur_Cube_Mangrove_Planks_JE2.png",
-        "Sulfur_Cube_Mangrove_Wood_JE2.png",
-        "Sulfur_Cube_Moss_Block_JE2.png",
-        "Sulfur_Cube_Mossy_Cobblestone_JE2.png",
-        "Sulfur_Cube_Mossy_Stone_Bricks_JE2.png",
-        "Sulfur_Cube_Oak_Log_JE2.png",
-        "Sulfur_Cube_Oak_Planks_JE2.png",
-        "Sulfur_Cube_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Orange_Concrete_JE2.png",
-        "Sulfur_Cube_Orange_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Orange_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Orange_Terracotta_JE2.png",
-        "Sulfur_Cube_Packed_Ice_JE2.png",
-        "Sulfur_Cube_Pale_Oak_Log_JE2.png",
-        "Sulfur_Cube_Pale_Oak_Planks_JE2.png",
-        "Sulfur_Cube_Pale_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Pink_Concrete_JE2.png",
-        "Sulfur_Cube_Pink_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Pink_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Pink_Terracotta_JE2.png",
-        "Sulfur_Cube_Podzol_JE2.png",
-        "Sulfur_Cube_Polished_Andesite_JE2.png",
-        "Sulfur_Cube_Polished_Deepslate_JE2.png",
-        "Sulfur_Cube_Polished_Diorite_JE2.png",
-        "Sulfur_Cube_Polished_Granite_JE2.png",
-        "Sulfur_Cube_Purple_Concrete_JE2.png",
-        "Sulfur_Cube_Purple_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Purple_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Purple_Terracotta_JE2.png",
-        "Sulfur_Cube_Red_Concrete_JE2.png",
-        "Sulfur_Cube_Red_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Red_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Red_Mushroom_Block_JE2.png",
-        "Sulfur_Cube_Red_Sand_JE2.png",
-        "Sulfur_Cube_Red_Sandstone_JE2.png",
-        "Sulfur_Cube_Red_Terracotta_JE2.png",
-        "Sulfur_Cube_Redstone_Block_JE2.png",
-        "Sulfur_Cube_Redstone_Ore_JE2.png",
-        "Sulfur_Cube_Rooted_Dirt_JE2.png",
-        "Sulfur_Cube_Sand_JE2.png",
-        "Sulfur_Cube_Sandstone_JE2.png",
-        "Sulfur_Cube_Smooth_Red_Sandstone_JE2.png",
-        "Sulfur_Cube_Smooth_Sandstone_JE2.png",
-        "Sulfur_Cube_Smooth_Stone_JE2.png",
-        "Sulfur_Cube_Soul_Sand_JE2.png",
-        "Sulfur_Cube_Spruce_Log_JE2.png",
-        "Sulfur_Cube_Spruce_Planks_JE2.png",
-        "Sulfur_Cube_Spruce_Wood_JE2.png",
-        "Sulfur_Cube_Stone_Bricks_JE2.png",
-        "Sulfur_Cube_Stone_JE2.png",
-        "Sulfur_Cube_Stripped_Acacia_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Acacia_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Bamboo_Block_JE2.png",
-        "Sulfur_Cube_Stripped_Birch_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Birch_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Cherry_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Cherry_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Crimson_Hyphae_JE2.png",
-        "Sulfur_Cube_Stripped_Crimson_Stem_JE2.png",
-        "Sulfur_Cube_Stripped_Dark_Oak_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Dark_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Jungle_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Jungle_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Mangrove_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Mangrove_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Oak_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Pale_Oak_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Pale_Oak_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Spruce_Log_JE2.png",
-        "Sulfur_Cube_Stripped_Spruce_Wood_JE2.png",
-        "Sulfur_Cube_Stripped_Warped_Hyphae_JE2.png",
-        "Sulfur_Cube_Stripped_Warped_Stem_JE2.png",
-        "Sulfur_Cube_Terracotta_JE2.png",
-        "Sulfur_Cube_TNT_JE1.png",
-        "Sulfur_Cube_Warped_Hyphae_JE2.png",
-        "Sulfur_Cube_Warped_Planks_JE2.png",
-        "Sulfur_Cube_Warped_Stem_JE2.png",
-        "Sulfur_Cube_White_Concrete_JE2.png",
-        "Sulfur_Cube_White_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_White_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_White_Terracotta_JE2.png",
-        "Sulfur_Cube_White_Wool_JE2.png",
-        "Sulfur_Cube_Yellow_Concrete_JE2.png",
-        "Sulfur_Cube_Yellow_Concrete_Powder_JE2.png",
-        "Sulfur_Cube_Yellow_Glazed_Terracotta_JE2.png",
-        "Sulfur_Cube_Yellow_Terracotta_JE2.png"
-    ];
-
-    document.getElementById('stats').innerHTML = `共 ${filenames.length} 个硫方怪`;
-
-    const gallery = document.getElementById('gallery');
-    for (let name of filenames) {
-        const div = document.createElement('div');
-        div.className = 'gallery-item';
-        div.innerHTML = `
-            <img src="images/${name}" alt="${name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3E❌%3C/text%3E%3C/svg%3E'">
-            <p>${name.replace('Sulfur_Cube_', '').replace('.png', '').replace(/_/g, ' ')}</p>
-        `;
-        gallery.appendChild(div);
-    }
-</script>
 </body>
 </html>
