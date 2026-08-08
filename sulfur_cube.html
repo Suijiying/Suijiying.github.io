@@ -179,5 +179,27 @@
         硫方怪画廊
     </div>
 </div>
+<div style="text-align:center;margin:2rem 0;padding:1rem;border-top:1px solid #ece5d9;">
+    <p style="font-size:0.7rem;color:#9aa98b;">输入彩蛋密码：</p>
+    <input type="password" id="eggInput" placeholder="输入密码..." style="padding:6px 12px;border-radius:40px;border:1px solid #d0d9c2;font-size:0.8rem;width:200px;text-align:center;">
+    <button onclick="checkEgg()" style="padding:6px 16px;border-radius:40px;border:none;background:#2a4a1a;color:white;font-size:0.8rem;cursor:pointer;">确认</button>
+</div>
+<script>
+    function checkEgg() {
+        const input = document.getElementById('eggInput');
+        if (input.value === 'impossible') {
+            window.location.href = 'https://Suijiying.github.io/secret.html';
+        } else {
+            alert('密码错误！');
+            input.value = '';
+        }
+    }
+    // 按回车键触发确认
+    document.getElementById('eggInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            checkEgg();
+        }
+    });
+</script>
 </body>
 </html>
