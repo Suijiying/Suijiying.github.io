@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硫方怪 缓慢滑行（冰壶）</title>
+    <link rel="icon" href="favicon_sulfur_cube.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f0;
+            font-family: -apple-system, 'Segoe UI', 'Noto Sans', system-ui;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: #f5f5f0;
+            padding: 1rem 0;
+            z-index: 10;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            color: #2a4a1a;
+            text-decoration: none;
+            border-bottom: 1px solid #d0d9c2;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #2a4a1a;
+        }
+
+        .stats {
+            color: #7c8b6e;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 导航栏样式 */
+        .nav-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1rem 0 1.5rem 0;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eae5db;
+        }
+
+        .cat-btn {
+            background: #eef2e6;
+            color: #3c6527;
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .cat-btn:hover {
+            background: #d4e0c6;
+        }
+
+        .cat-btn.active {
+            background: #2a4a1a;
+            color: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            padding: 0.5rem;
+            text-align: center;
+            transition: transform 0.1s ease;
+            border: 1px solid #eae5db;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: #8bb56a;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .gallery-item p {
+            font-size: 0.6rem;
+            color: #5a6b4e;
+            margin-top: 0.3rem;
+            word-break: break-word;
+            line-height: 1.2;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #9aa98b;
+            border-top: 1px solid #ece5d9;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+                gap: 0.5rem;
+            }
+            .gallery-item p {
+                font-size: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <a class="back-link" href="sulfur_cube.html">← 返回分类总览</a>
+        <a class="back-link" style="margin-left: 1rem;" href="https://Suijiying.github.io">个人主页</a>
+        <h1>硫方怪 缓慢滑行（冰壶）</h1>
+        <div class="stats" id="stats"></div>
+
+        <!-- 导航栏 -->
+        <div class="nav-categories">
+            <a href="sulfur_cube_bouncy.html" class="cat-btn">弹性（橡胶球）</a>
+            <a href="sulfur_cube_regular.html" class="cat-btn">普通（足球）</a>
+            <a href="sulfur_cube_slow_bouncy.html" class="cat-btn">缓慢弹性</a>
+            <a href="sulfur_cube_slow_flat.html" class="cat-btn">缓慢平移（药球）</a>
+            <a href="sulfur_cube_fast_flat.html" class="cat-btn">快速平移（高尔夫球）</a>
+            <a href="sulfur_cube_light.html" class="cat-btn">轻盈（沙滩球）</a>
+            <a href="sulfur_cube_fast_sliding.html" class="cat-btn">快速滑行（冰球）</a>
+            <a href="sulfur_cube_slow_sliding.html" class="cat-btn active">缓慢滑行（冰壶）</a>
+            <a href="sulfur_cube_sticky.html" class="cat-btn">黏性</a>
+            <a href="sulfur_cube_high_resistance.html" class="cat-btn">高阻力</a>
+            <a href="sulfur_cube_explosive.html" class="cat-btn">爆炸</a>
+            <a href="sulfur_cube_hot.html" class="cat-btn">高温</a>
+            <a href="sulfur_cube_removed.html" class="cat-btn">已移除</a>
+        </div>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+    <div class="footer">
+        Suijiying 硫方怪画廊<br>
+        缓慢滑行（冰壶）原型
+    </div>
+</div>
+
+<script>
+    const filenames = [
+"Sulfur_Cube_Mushroom_Stem_JE2.png",
+"Sulfur_Cube_Brown_Mushroom_Block_JE2.png",
+"Sulfur_Cube_Red_Mushroom_Block_JE2.png",
+"Sulfur_Cube_Nether_Wart_Block_JE2.png",
+"Sulfur_Cube_Warped_Wart_Block_JE2.png",
+"Sulfur_Cube_Shroomlight_JE2.png",
+"Sulfur_Cube_Mycelium_JE2.png"
+    ];
+
+    // 更新统计
+    document.getElementById('stats').innerHTML = `共 ${filenames.length} 个方块`;
+
+    // 生成图片墙
+    const gallery = document.getElementById('gallery');
+    for (let name of filenames) {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        // 提取显示名称（去掉 Sulfur_Cube_ 和 .png，把下划线转成空格）
+        let displayName = name.replace('Sulfur_Cube_', '').replace('.png', '').replace(/_/g, ' ');
+        div.innerHTML = `
+            <img src="images/${name}" alt="${displayName}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3E❌%3C/text%3E%3C/svg%3E'">
+            <p>${displayName}</p>
+        `;
+        gallery.appendChild(div);
+    }
+</script>
+</body>
+</html>
