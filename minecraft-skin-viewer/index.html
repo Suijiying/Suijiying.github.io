@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft: Humanoid</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- ===== Enter player name ===== -->
+    <div style="display:flex; gap:8px; align-items:center; margin-bottom:10px; flex-wrap:wrap;">
+        <input id="playerName" type="text" placeholder="Enter player name..." value="Steve" style="padding:6px 14px; border-radius:20px; border:1px solid #ccc; font-size:14px; flex:1; min-width:150px;">
+        <button id="loadSkin" class="btn" style="padding:6px 20px; border:none; border-radius:24px; background:#4a7aff; color:#fff; font-weight:600; cursor:pointer;">load skin</button>
+        <span id="statusMsg" style="font-size:13px; color:#888;"></span>
+    </div>
+
+    <input id="isAlex" type="checkbox"><label for="isAlex">Slim Model</label>
+    <input id="size" type="checkbox"><label for="size">large</label><br>
+    Pose:<select id="pose_select"></select><br>
+    Texture:<input id="file" type="file" accept=".png"><div id="thumb"></div>
+<img id="playerAvatar" width="48" height="48" style="image-rendering:pixelated; border-radius:4px; display:none; margin-left:8px;">
+<br>
+    <button id="rotate">rotate</button>
+    <button id="reset">reset camera</button>
+    <button id="execute">draw</button><br>
+    <div id="background">
+        <canvas id="myCanvas"></canvas>
+    </div>
+    <img id="steve" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAdVBMVEUAAACqclmbY0kApKQElZWQWT8FiIgAr6+BUzlBNZs6MYk3Nzc/KhUzJBErHg0kGAiPXj6zeV4Af38oKChGOqU/Pz9KSkoKvLwDenpqQDBJJRAAaGgAzMz///9CHQp3QjVSPYl2SzO3g2s0JRJVVVUmGgqUYD6FZw01AAAAAXRSTlMAQObYZgAAAsZJREFUeF7tlueS4jAQhHdGwTmQN4aL7/+I1z2WjoNiy4b9eduSrRFFfzUjGay7rL7v0Lu+TLq7Vn3XohPwDboFADNb+GYKVwPo7nDdDuinIsJUwvWAjmvYt20ZSiiM1wO4BtBYWrtlFzquY1+Oj1A5LjfSOfDeQiBg0nHoLOrnAfzi0HXo8LMNxKG3/LxdVHvPm66+r0R/2LzlhmIEdRZgGaMEldVKRNRcUxlWyIIS0IIO8vIu+v4igwY40QYDzQOY7KCQyMODCKPB8h8GQuYXceiHoGP5O4yPb2+vCMpRAz4koF8CKAP8SuPr4yv2P2CigY/jL2jhr7KGmmazyfNnAULluU7KhqIonIrIRcBm0zR/ARogvQgQwD/MYBZwAGA+g49LcCzhPIOqqqvtdltjqBDUHkKiquKKKXYYYIXZYVhDnBwB9RGwhXyMvii8CO+M6SyyH4CnpzXCIyAZqwyI9/fRwcIbYxI8u9mdJ4CwywD0eyibGDu6cK2TniCOJwCWQUIN0RSdAWICeEJUNbCZMDnNAJ0QXkw7OmeAVIIlJCKKJoCoQKcAKI8RYspY+JhjTukiwgDoRwCUAXkXItN2zjM2gCPAZIWcZFCbkRhEkI8e3VkSFiGAPzJ/A+gZYL+vk/YmuIwBo6fohj8y/0w4ATQ7uH7SumO442bYekbYGKAiBNsJoBNA/wU0zY7GXWNRkx5pbEuM07qAhTs8dNpeMrj7L/Wlw6TCQQWCc8OXvjT7suU7SUSU8U0HDgKCinwig0Mh0GcycEEXlZDPC1V+W1drKL/aqXlAdtYAQfY6zwTnlgFqAqojwCcz+vIMDIAonwey0v9B1hH40XkhUMpmCrMZ0AxZBozh0XQ0MF1XAkRAsmNQWb6IEAHBACYbFjxE6UlItVjtZp8FXD4vZD/tM4DL5wUDaAboPOD8vKAhH6vEhnPDH6nNQp4lz7TwAAAAAElFTkSuQmCC" style="display:none" />
+    <img id="alex" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAZlBMVEUAAACMvorrmD/ljT97snhkQSzr0LCGuYTv2r/fxKLUt4/egS5xq258Vz5YWFhyTjZPT09sRi7zqFhcOyc2NjaUyJKUlmsrVCiAglo/Pz9lZWUYOBYoKCj////vu7EjYiRvb291UDi5dsVVAAAAAXRSTlMAQObYZgAAAwBJREFUeF7tludy2zAQhHOo7E29uOT9XzK7AGiTGscGnZ/xUgApzux3h9NAuF+ztNI1Lq1VjY9Sv7ZKQXUN5/cB00RzzETpzQBdx8iYNZ+2ZzBBmCJHbwcwrMICyqoGg4DtRZw0CGVZVhUg2zNA/qxjWTqoLLONTJyhCdD4aExcCt5z6IzIwanDFGbmwbcqvMyp/hwO66ddYTAhYjIADKd0ILjCuUDQIXigfF1MrWNo9/RSFC9PLoZWwYxMvgYwNApfzCr1W03qSWUAuPuS//m5wCLKSU+1qpkARkYRdV1VpUsMxzrCrrkrkBsAOWqg/f5+n6HiWRmlm6TZICKI8RfA/b7fvwM895Rqmh20BrjqQ8But87gXJEAP5WRAeKsMjhjQ2EVCfB5Bl7E2L611jaNhwTyZxSzOjfvMl6S4sMCYI2xY9uOFtrtrBVjxB8L54oAMLPdc3D2HAtAP449/G0PAJ8AMN4cC/jp5jeRgxwOmDmFscygpRX+diQJAHgEBPq9wYCZ13mlBWCkHZQegB0GPMFBLwAh5AFyQWWQcwtA13V2hN120PXaIWcazMGLJ4XPRBRBRHDjLABXmLorzVEwMShNABjeDRFFItC/AgTja/B2l2G4wASLNDShHiKwy2cAmrpkHrpuuN1uJ9ZfGjEnfAGDV5MArMNDBjAlc8fRGNOc4ATnxGfcqVvyE7CuwUDX65V2ggbxBuWXcBkvlBHc590eCEvA/nIZuP7hctnvMYQ++xuy4AAiUW8liL9Cln6UzkhK628ReDqAA30vAx6s/6RJrQxH6px0zAHA/1/rRzzuV4etEln+iWxvOJSWym0B7B6O+0kjg62AZQaTbMjAUm0fj3sjkNdKknQ2oO2hcUQm3gsAXmJfkAcY+7FN6u2iM8CVAYhtAlaAGRof+4J4Pwbh+8cAetl2UCXlksqMDB76hSE2BEkuAxCOufd+oYuH6aycDOha9AubATQNi34BC8gHPPYLFAD5NXjsFyjWfl5Exq+Q+gVo7hfYEXyWwR/uMURd56PUtQAAAABJRU5ErkJggg==" style="display:none" />
+    <img id="drawed">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r107/three.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/three@0.102.0/examples/js/controls/OrbitControls.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+body {
+			background-color: white;
+		}
+
+		#background {
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAAAAABX3VL4AAAADklEQVQIHWPYXc9QvxsAB2ICdaBJUyUAAAAASUVORK5CYII=);
+			background-size: 12px 12px;
+			image-rendering: pixelated;
+			-ms-interpolation-mode: nearest-neighbor;
+			display: inline-block;
+      line-height: 1px;
+		}
+
+#myCanvas {
+  cursor: all-scroll;
+  filter: drop-shadow(0 0 0.5rem rgba(0,0,0,0.6));
+}
