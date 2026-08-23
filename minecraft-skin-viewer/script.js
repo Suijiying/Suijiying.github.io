@@ -2186,7 +2186,7 @@ var animations = {
 var json_url = "data:application/json;base64,eyJtZXRhIjp7ImZvcm1hdF92ZXJzaW9uIjoiNC4wIiwibW9kZWxfZm9ybWF0IjoiYmVkcm9jayIsImJveF91diI6dHJ1ZX0sIm5hbWUiOiJodW1hbm9pZCIsInZpc2libGVfYm94IjpbMSwxLDBdLCJyZXNvbHV0aW9uIjp7IndpZHRoIjo2NCwiaGVpZ2h0Ijo2NH0sImVsZW1lbnRzIjpbeyJuYW1lIjoiaGVhZCIsImZyb20iOlstNCwyNCwtNF0sInRvIjpbNCwzMiw0XSwiYXV0b3V2IjowLCJjb2xvciI6Niwib3JpZ2luIjpbMCwwLDBdLCJmYWNlcyI6eyJub3J0aCI6eyJ1diI6WzgsOCwxNiwxNl0sInRleHR1cmUiOjB9LCJlYXN0Ijp7InV2IjpbMCw4LDgsMTZdLCJ0ZXh0dXJlIjowfSwic291dGgiOnsidXYiOlsyNCw4LDMyLDE2XSwidGV4dHVyZSI6MH0sIndlc3QiOnsidXYiOlsxNiw4LDI0LDE2XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbMTYsOCw4LDBdLCJ0ZXh0dXJlIjowfSwiZG93biI6eyJ1diI6WzI0LDAsMTYsOF0sInRleHR1cmUiOjB9fSwidHlwZSI6ImN1YmUiLCJ1dWlkIjoiOTM1NWJjYjctM2Q0Yi0zYzVhLTI4ZTgtYzNiN2U1ZDkwN2Y4In0seyJuYW1lIjoiYm9keSIsImZyb20iOlstNCwxMiwtMl0sInRvIjpbNCwyNCwyXSwiYXV0b3V2IjowLCJjb2xvciI6NSwib3JpZ2luIjpbMCwwLDBdLCJ1dl9vZmZzZXQiOlsxNiwxNl0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbMjAsMjAsMjgsMzJdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzE2LDIwLDIwLDMyXSwidGV4dHVyZSI6MH0sInNvdXRoIjp7InV2IjpbMzIsMjAsNDAsMzJdLCJ0ZXh0dXJlIjowfSwid2VzdCI6eyJ1diI6WzI4LDIwLDMyLDMyXSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbMjgsMjAsMjAsMTZdLCJ0ZXh0dXJlIjowfSwiZG93biI6eyJ1diI6WzM2LDE2LDI4LDIwXSwidGV4dHVyZSI6MH19LCJ0eXBlIjoiY3ViZSIsInV1aWQiOiJmODcxMzc1MC0xZmQwLTY4YjctYTE2NC03OGEzZGUxMjJhZWUifSx7Im5hbWUiOiJsZWZ0QXJtIiwiZnJvbSI6WzQsMTIsLTJdLCJ0byI6WzgsMjQsMl0sImF1dG91diI6MCwiY29sb3IiOjMsIm9yaWdpbiI6WzAsMCwwXSwidXZfb2Zmc2V0IjpbNDAsMTZdLCJmYWNlcyI6eyJub3J0aCI6eyJ1diI6WzQ0LDIwLDQ4LDMyXSwidGV4dHVyZSI6MH0sImVhc3QiOnsidXYiOls0MCwyMCw0NCwzMl0sInRleHR1cmUiOjB9LCJzb3V0aCI6eyJ1diI6WzUyLDIwLDU2LDMyXSwidGV4dHVyZSI6MH0sIndlc3QiOnsidXYiOls0OCwyMCw1MiwzMl0sInRleHR1cmUiOjB9LCJ1cCI6eyJ1diI6WzQ4LDIwLDQ0LDE2XSwidGV4dHVyZSI6MH0sImRvd24iOnsidXYiOls1MiwxNiw0OCwyMF0sInRleHR1cmUiOjB9fSwidHlwZSI6ImN1YmUiLCJ1dWlkIjoiNDZmMjFkNmQtZmUyOC00NGI2LWViOTMtZjE5MTI3MzdjYTMwIn0seyJuYW1lIjoicmlnaHRBcm0iLCJmcm9tIjpbLTgsMTIsLTJdLCJ0byI6Wy00LDI0LDJdLCJhdXRvdXYiOjAsImNvbG9yIjo1LCJvcmlnaW4iOlswLDAsMF0sInV2X29mZnNldCI6WzMyLDQ4XSwiZmFjZXMiOnsibm9ydGgiOnsidXYiOlszNiw1Miw0MCw2NF0sInRleHR1cmUiOjB9LCJlYXN0Ijp7InV2IjpbMzIsNTIsMzYsNjRdLCJ0ZXh0dXJlIjowfSwic291dGgiOnsidXYiOls0NCw1Miw0OCw2NF0sInRleHR1cmUiOjB9LCJ3ZXN0Ijp7InV2IjpbNDAsNTIsNDQsNjRdLCJ0ZXh0dXJlIjowfSwidXAiOnsidXYiOls0MCw1MiwzNiw0OF0sInRleHR1cmUiOjB9LCJkb3duIjp7InV2IjpbNDQsNDgsNDAsNTJdLCJ0ZXh0dXJlIjowfX0sInR5cGUiOiJjdWJlIiwidXVpZCI6IjdlODZlY2Q1LWE2N2ItMDFmNy00ZTAzLTlmOTAzOGEwMDkxOCJ9LHsibmFtZSI6ImxlZnRMZWciLCJmcm9tIjpbLTAuMSwwLC0yXSwidG8iOlszLjksMTIsMl0sImF1dG91diI6MCwiY29sb3IiOjQsIm9yaWdpbiI6WzAsMCwwXSwidXZfb2Zmc2V0IjpbMCwxNl0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbNCwyMCw4LDMyXSwidGV4dHVyZSI6MH0sImVhc3QiOnsidXYiOlswLDIwLDQsMzJdLCJ0ZXh0dXJlIjowfSwic291dGgiOnsidXYiOlsxMiwyMCwxNiwzMl0sInRleHR1cmUiOjB9LCJ3ZXN0Ijp7InV2IjpbOCwyMCwxMiwzMl0sInRleHR1cmUiOjB9LCJ1cCI6eyJ1diI6WzgsMjAsNCwxNl0sInRleHR1cmUiOjB9LCJkb3duIjp7InV2IjpbMTIsMTYsOCwyMF0sInRleHR1cmUiOjB9fSwidHlwZSI6ImN1YmUiLCJ1dWlkIjoiZThmNzRiMDgtNTEwYi0yMmYxLWNlYzEtZGM2ZmM3NjQxOTBmIn0seyJuYW1lIjoicmlnaHRMZWciLCJmcm9tIjpbLTMuOSwwLC0yXSwidG8iOlswLjEsMTIsMl0sIm9yaWdpbiI6WzAsMCwwXSwidXZfb2Zmc2V0IjpbMTYsNDhdLCJmYWNlcyI6eyJub3J0aCI6eyJ1diI6WzIwLDUyLDI0LDY0XSwidGV4dHVyZSI6MH0sImVhc3QiOnsidXYiOlsxNiw1MiwyMCw2NF0sInRleHR1cmUiOjB9LCJzb3V0aCI6eyJ1diI6WzI4LDUyLDMyLDY0XSwidGV4dHVyZSI6MH0sIndlc3QiOnsidXYiOlsyNCw1MiwyOCw2NF0sInRleHR1cmUiOjB9LCJ1cCI6eyJ1diI6WzI0LDUyLDIwLDQ4XSwidGV4dHVyZSI6MH0sImRvd24iOnsidXYiOlsyOCw0OCwyNCw1Ml0sInRleHR1cmUiOjB9fSwidHlwZSI6ImN1YmUiLCJ1dWlkIjoiNmJlN2E1NmEtNGZiMC02N2M4LTEzYzUtNGQyZDRmYmU1MDcwIn0seyJuYW1lIjoiaGVhZCIsImZyb20iOlstNCwyNCwtNF0sInRvIjpbNCwzMiw0XSwiaW5mbGF0ZSI6MC40LCJvcmlnaW4iOlswLDAsMF0sInV2X29mZnNldCI6WzMyLDBdLCJmYWNlcyI6eyJub3J0aCI6eyJ1diI6WzQwLDgsNDgsMTZdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzMyLDgsNDAsMTZdLCJ0ZXh0dXJlIjowfSwic291dGgiOnsidXYiOls1Niw4LDY0LDE2XSwidGV4dHVyZSI6MH0sIndlc3QiOnsidXYiOls0OCw4LDU2LDE2XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbNDgsOCw0MCwwXSwidGV4dHVyZSI6MH0sImRvd24iOnsidXYiOls1NiwwLDQ4LDhdLCJ0ZXh0dXJlIjowfX0sInR5cGUiOiJjdWJlIiwidXVpZCI6ImYxYTZlMjY0LTBmYzctNzgyZi1lMDAxLWRlNGZlYmQxN2QyNSJ9LHsibmFtZSI6ImJvZHkiLCJmcm9tIjpbLTQsMTIsLTJdLCJ0byI6WzQsMjQsMl0sImluZmxhdGUiOjAuNCwib3JpZ2luIjpbMCwwLDBdLCJ1dl9vZmZzZXQiOlsxNiwzMl0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbMjAsMzYsMjgsNDhdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzE2LDM2LDIwLDQ4XSwidGV4dHVyZSI6MH0sInNvdXRoIjp7InV2IjpbMzIsMzYsNDAsNDhdLCJ0ZXh0dXJlIjowfSwid2VzdCI6eyJ1diI6WzI4LDM2LDMyLDQ4XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbMjgsMzYsMjAsMzJdLCJ0ZXh0dXJlIjowfSwiZG93biI6eyJ1diI6WzM2LDMyLDI4LDM2XSwidGV4dHVyZSI6MH19LCJ0eXBlIjoiY3ViZSIsInV1aWQiOiI0ZDA5MTdiYS00MjEyLWE2NGItZDRlMy0xMzkyYzY4ZjMyYjMifSx7Im5hbWUiOiJsZWZ0QXJtIiwiZnJvbSI6WzQsMTIsLTJdLCJ0byI6WzgsMjQsMl0sImluZmxhdGUiOjAuNCwib3JpZ2luIjpbMCwwLDBdLCJ1dl9vZmZzZXQiOls0MCwzMl0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbNDQsMzYsNDgsNDhdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzQwLDM2LDQ0LDQ4XSwidGV4dHVyZSI6MH0sInNvdXRoIjp7InV2IjpbNTIsMzYsNTYsNDhdLCJ0ZXh0dXJlIjowfSwid2VzdCI6eyJ1diI6WzQ4LDM2LDUyLDQ4XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbNDgsMzYsNDQsMzJdLCJ0ZXh0dXJlIjowfSwiZG93biI6eyJ1diI6WzUyLDMyLDQ4LDM2XSwidGV4dHVyZSI6MH19LCJ0eXBlIjoiY3ViZSIsInV1aWQiOiJjODYyYjRiYy1jMzE2LTg2ZTQtYjIzZC0zNmM5OTU2M2QyNDgifSx7Im5hbWUiOiJyaWdodEFybSIsImZyb20iOlstOCwxMiwtMl0sInRvIjpbLTQsMjQsMl0sImluZmxhdGUiOjAuNCwib3JpZ2luIjpbMCwwLDBdLCJ1dl9vZmZzZXQiOls0OCw0OF0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbNTIsNTIsNTYsNjRdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzQ4LDUyLDUyLDY0XSwidGV4dHVyZSI6MH0sInNvdXRoIjp7InV2IjpbNjAsNTIsNjQsNjRdLCJ0ZXh0dXJlIjowfSwid2VzdCI6eyJ1diI6WzU2LDUyLDYwLDY0XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbNTYsNTIsNTIsNDhdLCJ0ZXh0dXJlIjowfSwiZG93biI6eyJ1diI6WzYwLDQ4LDU2LDUyXSwidGV4dHVyZSI6MH19LCJ0eXBlIjoiY3ViZSIsInV1aWQiOiI0YTZlOWI4NS1kNjY3LWUwYTgtYzA0Ny1hZmZiNzFlYzQzYmYifSx7Im5hbWUiOiJsZWZ0TGVnIiwiZnJvbSI6Wy0wLjEsMCwtMl0sInRvIjpbMy45LDEyLDJdLCJpbmZsYXRlIjowLjQsIm9yaWdpbiI6WzAsMCwwXSwidXZfb2Zmc2V0IjpbMCwzMl0sImZhY2VzIjp7Im5vcnRoIjp7InV2IjpbNCwzNiw4LDQ4XSwidGV4dHVyZSI6MH0sImVhc3QiOnsidXYiOlswLDM2LDQsNDhdLCJ0ZXh0dXJlIjowfSwic291dGgiOnsidXYiOlsxMiwzNiwxNiw0OF0sInRleHR1cmUiOjB9LCJ3ZXN0Ijp7InV2IjpbOCwzNiwxMiw0OF0sInRleHR1cmUiOjB9LCJ1cCI6eyJ1diI6WzgsMzYsNCwzMl0sInRleHR1cmUiOjB9LCJkb3duIjp7InV2IjpbMTIsMzIsOCwzNl0sInRleHR1cmUiOjB9fSwidHlwZSI6ImN1YmUiLCJ1dWlkIjoiYTA1NWEyMjYtZTQ0Zi01MDRiLTg3MDktNTliYTkzZGViMzMxIn0seyJuYW1lIjoicmlnaHRMZWciLCJmcm9tIjpbLTMuOSwwLC0yXSwidG8iOlswLjEsMTIsMl0sImluZmxhdGUiOjAuNCwib3JpZ2luIjpbMCwwLDBdLCJ1dl9vZmZzZXQiOlswLDQ4XSwiZmFjZXMiOnsibm9ydGgiOnsidXYiOls0LDUyLDgsNjRdLCJ0ZXh0dXJlIjowfSwiZWFzdCI6eyJ1diI6WzAsNTIsNCw2NF0sInRleHR1cmUiOjB9LCJzb3V0aCI6eyJ1diI6WzEyLDUyLDE2LDY0XSwidGV4dHVyZSI6MH0sIndlc3QiOnsidXYiOls4LDUyLDEyLDY0XSwidGV4dHVyZSI6MH0sInVwIjp7InV2IjpbOCw1Miw0LDQ4XSwidGV4dHVyZSI6MH0sImRvd24iOnsidXYiOlsxMiw0OCw4LDUyXSwidGV4dHVyZSI6MH19LCJ0eXBlIjoiY3ViZSIsInV1aWQiOiI1ZWU0ODY0MS02ODkwLTg2YWItZTQ5MS00N2M5MjFmMzE3ZWIifV0sIm91dGxpbmVyIjpbeyJuYW1lIjoiaGVhZCIsIm9yaWdpbiI6WzAsMjQsMF0sInV1aWQiOiI3MDk3MWRmYS1jZDkzLTU2M2ItZDYyNS04ZDljMmI3NDJmNzUiLCJjaGlsZHJlbiI6WyI5MzU1YmNiNy0zZDRiLTNjNWEtMjhlOC1jM2I3ZTVkOTA3ZjgiLCJmMWE2ZTI2NC0wZmM3LTc4MmYtZTAwMS1kZTRmZWJkMTdkMjUiXX0seyJuYW1lIjoiYm9keSIsIm9yaWdpbiI6WzAsMjQsMF0sInV1aWQiOiI4ZGVhYTFkMC1kZTFhLTZkMWUtOWI3YS0xMjBkYTEyZjkyMTEiLCJjaGlsZHJlbiI6WyJmODcxMzc1MC0xZmQwLTY4YjctYTE2NC03OGEzZGUxMjJhZWUiLCI0ZDA5MTdiYS00MjEyLWE2NGItZDRlMy0xMzkyYzY4ZjMyYjMiXX0seyJuYW1lIjoibGVmdEFybSIsIm9yaWdpbiI6WzUsMjIsMF0sInJvdGF0aW9uIjpbMCwwLDVdLCJ1dWlkIjoiN2MzZTk3YjUtOTcyMi1iOGUwLTkwODktNmFiNjhiMTBmMWM4IiwiY2hpbGRyZW4iOlsiNDZmMjFkNmQtZmUyOC00NGI2LWViOTMtZjE5MTI3MzdjYTMwIiwiYzg2MmI0YmMtYzMxNi04NmU0LWIyM2QtMzZjOTk1NjNkMjQ4Il19LHsibmFtZSI6InJpZ2h0QXJtIiwib3JpZ2luIjpbLTUsMjIsMF0sInJvdGF0aW9uIjpbMCwwLC01XSwidXVpZCI6IjIzY2ZjZTk3LWY4ZmUtYTE0MC1mZThiLWU5NWFmMDU4NjZhOSIsImNoaWxkcmVuIjpbIjdlODZlY2Q1LWE2N2ItMDFmNy00ZTAzLTlmOTAzOGEwMDkxOCIsIjRhNmU5Yjg1LWQ2NjctZTBhOC1jMDQ3LWFmZmI3MWVjNDNiZiJdfSx7Im5hbWUiOiJsZWZ0TGVnIiwib3JpZ2luIjpbMS45LDEyLDBdLCJ1dWlkIjoiYjNkZjZlNjktZGUwMC03NGY3LTlhN2EtODVlN2Q2NWIxZGMzIiwiY2hpbGRyZW4iOlsiZThmNzRiMDgtNTEwYi0yMmYxLWNlYzEtZGM2ZmM3NjQxOTBmIiwiYTA1NWEyMjYtZTQ0Zi01MDRiLTg3MDktNTliYTkzZGViMzMxIl19LHsibmFtZSI6InJpZ2h0TGVnIiwib3JpZ2luIjpbLTEuOSwxMiwwXSwidXVpZCI6IjAwNDAwMjE0LWM0MjYtZWJkZi03OTRmLTg5N2FlMGIxOTkzZiIsImNoaWxkcmVuIjpbIjZiZTdhNTZhLTRmYjAtNjdjOC0xM2M1LTRkMmQ0ZmJlNTA3MCIsIjVlZTQ4NjQxLTY4OTAtODZhYi1lNDkxLTQ3YzkyMWYzMTdlYiJdfV0sInRleHR1cmVzIjpbeyJuYW1lIjoic3RldmUucG5nIiwiZm9sZGVyIjoiZW50aXR5IiwibmFtZXNwYWNlIjoibWluZWNyYWZ0IiwiaWQiOiIwIiwidXVpZCI6ImE4YjZiZmJiLTEzZjctNjdkMC02NzY5LWE4M2E4ZDczZTIxYyJ9XX0=";
 
 // ============================================================
-// 5. Player Skin Loader (使用 mc-heads.net - 支持 CORS)
+// 5. Player Skin Loader (使用 minotar.net - 支持 CORS)
 // ============================================================
 
 $(function() {
@@ -2198,16 +2198,47 @@ $(function() {
     function loadPlayerSkin(username) {
         $statusMsg.text('Loading skin for ' + username + '...').css('color', '#888');
 
-        // 直接通过 mc-heads.net 获取皮肤（支持 CORS，不需要 UUID）
+        // 使用 minotar.net 直接获取皮肤（支持 CORS）
+        var skinUrl = 'https://minotar.net/skin/' + encodeURIComponent(username);
+
+        var skinImg = new Image();
+        skinImg.crossOrigin = 'Anonymous';
+        skinImg.onload = function() {
+            // minotar 返回 8x8 的默认皮肤时说明玩家不存在
+            // 检查是否是默认皮肤（8x8）
+            if (skinImg.width === 8 && skinImg.height === 8) {
+                $statusMsg.text('❌ Player "' + username + '" does not exist or has no custom skin!').css('color', '#e74c3c');
+                return;
+            }
+            applySkinTexture(skinImg);
+            $statusMsg.text('✅ Skin loaded for ' + username + '!').css('color', '#27ae60');
+
+            var avatarImg = document.getElementById('playerAvatar');
+            if (avatarImg) {
+                avatarImg.src = 'https://minotar.net/avatar/' + encodeURIComponent(username) + '/48';
+                avatarImg.style.display = 'inline-block';
+            }
+        };
+        skinImg.onerror = function() {
+            // 备用：尝试 mc-heads.net
+            $statusMsg.text('Trying alternative...').css('color', '#888');
+            loadSkinViaMinecraftHeads(username);
+        };
+        skinImg.src = skinUrl;
+    }
+
+    // 备用方案1：mc-heads.net
+    function loadSkinViaMinecraftHeads(username) {
         var skinUrl = 'https://mc-heads.net/skin/' + encodeURIComponent(username);
 
         var skinImg = new Image();
         skinImg.crossOrigin = 'Anonymous';
         skinImg.onload = function() {
+            // mc-heads 返回 64x64 的 Steve 皮肤时说明玩家不存在
+            // 简单判断：如果图片是 64x64 且是默认 Steve，视为不存在
             applySkinTexture(skinImg);
             $statusMsg.text('✅ Skin loaded for ' + username + '!').css('color', '#27ae60');
 
-            // 显示头像
             var avatarImg = document.getElementById('playerAvatar');
             if (avatarImg) {
                 avatarImg.src = 'https://mc-heads.net/avatar/' + encodeURIComponent(username) + '/48';
@@ -2215,16 +2246,15 @@ $(function() {
             }
         };
         skinImg.onerror = function() {
-            // 如果 mc-heads.net 失败，尝试 Crafatar（但需要 UUID）
+            // 备用方案2：通过 UUID 获取
             $statusMsg.text('Trying fallback...').css('color', '#888');
-            loadSkinViaCrafatar(username);
+            loadSkinViaUUID(username);
         };
         skinImg.src = skinUrl;
     }
 
-    // 备用方案：通过 Crafatar（需要先获取 UUID）
-    function loadSkinViaCrafatar(username) {
-        // 使用 minetools 获取 UUID（支持 CORS）
+    // 备用方案2：通过 UUID 获取（使用 minetools）
+    function loadSkinViaUUID(username) {
         $.getJSON('https://api.minetools.eu/uuid/' + username)
             .done(function(data) {
                 if (!data || !data.id) {
@@ -2234,28 +2264,43 @@ $(function() {
 
                 var uuid = data.id.replace(/(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})/, '$1-$2-$3-$4-$5');
                 var cleanUuid = uuid.replace(/-/g, '');
-                var skinUrl = 'https://crafatar.com/skins/' + cleanUuid;
+                
+                // 使用多种皮肤服务
+                var skinUrls = [
+                    'https://crafatar.com/skins/' + cleanUuid,
+                    'https://minotar.net/skin/' + cleanUuid,
+                    'https://mc-heads.net/skin/' + cleanUuid
+                ];
 
-                var skinImg = new Image();
-                skinImg.crossOrigin = 'Anonymous';
-                skinImg.onload = function() {
-                    applySkinTexture(skinImg);
-                    $statusMsg.text('✅ Skin loaded for ' + username + '!').css('color', '#27ae60');
-
-                    var avatarImg = document.getElementById('playerAvatar');
-                    if (avatarImg) {
-                        avatarImg.src = 'https://crafatar.com/avatars/' + cleanUuid + '?size=48&overlay';
-                        avatarImg.style.display = 'inline-block';
-                    }
-                };
-                skinImg.onerror = function() {
-                    $statusMsg.text('❌ Failed to load skin for "' + username + '"').css('color', '#e74c3c');
-                };
-                skinImg.src = skinUrl;
+                tryNextSkin(skinUrls, 0, username, cleanUuid);
             })
             .fail(function() {
                 $statusMsg.text('❌ Player "' + username + '" does not exist!').css('color', '#e74c3c');
             });
+    }
+
+    function tryNextSkin(urls, index, username, uuid) {
+        if (index >= urls.length) {
+            $statusMsg.text('❌ Failed to load skin for "' + username + '"').css('color', '#e74c3c');
+            return;
+        }
+
+        var skinImg = new Image();
+        skinImg.crossOrigin = 'Anonymous';
+        skinImg.onload = function() {
+            applySkinTexture(skinImg);
+            $statusMsg.text('✅ Skin loaded for ' + username + '!').css('color', '#27ae60');
+
+            var avatarImg = document.getElementById('playerAvatar');
+            if (avatarImg && uuid) {
+                avatarImg.src = 'https://crafatar.com/avatars/' + uuid + '?size=48&overlay';
+                avatarImg.style.display = 'inline-block';
+            }
+        };
+        skinImg.onerror = function() {
+            tryNextSkin(urls, index + 1, username, uuid);
+        };
+        skinImg.src = urls[index];
     }
 
     function applySkinTexture(skinImg) {
