@@ -1651,6 +1651,27 @@ $(function () {
         controls.saveState();
     });
 
+    let convert64 = function (context, img) {
+    let m = val => Math.floor(val * (img.width / 64));
+    
+    context.translate(img.width, 0);
+    context.scale(-1, 1);
+    context.drawImage(img, m(4), m(16), m(4), m(4), m(40), m(48), m(4), m(4));
+    context.drawImage(img, m(8), m(16), m(4), m(4), m(36), m(48), m(4), m(4));
+    context.drawImage(img, m(0), m(20), m(4), m(12), m(44), m(52), m(4), m(12));
+    context.drawImage(img, m(4), m(20), m(4), m(12), m(40), m(52), m(4), m(12));
+    context.drawImage(img, m(8), m(20), m(4), m(12), m(36), m(52), m(4), m(12));
+    context.drawImage(img, m(12), m(20), m(4), m(12), m(32), m(52), m(4), m(12));
+    context.drawImage(img, m(44), m(16), m(4), m(4), m(24), m(48), m(4), m(4));
+    context.drawImage(img, m(48), m(16), m(4), m(4), m(20), m(48), m(4), m(4));
+    context.drawImage(img, m(40), m(20), m(4), m(12), m(28), m(52), m(4), m(12));
+    context.drawImage(img, m(44), m(20), m(4), m(12), m(24), m(52), m(4), m(12));
+    context.drawImage(img, m(48), m(20), m(4), m(12), m(20), m(52), m(4), m(12));
+    context.drawImage(img, m(52), m(20), m(4), m(12), m(16), m(52), m(4), m(12));
+    context.restore(0, 0);
+    context.resetTransform();
+    };
+
     $("#file").change(function (e) {
     let files = e.currentTarget.files;
 
@@ -1663,6 +1684,10 @@ $(function () {
         // 64x32 或 64x64 皮肤都直接绘制，不拉伸
         // 64x32 下半部分自动留空
         context.drawImage(this, 0, 0);
+
+    if (this.width === 64 && this.height === 32) {
+        convert64(context, this);
+    }
 
         loader.materials[0].map.image = canvas;
         loader.materials[0].map.needsUpdate = true;
@@ -2283,6 +2308,10 @@ $(function() {
     // 直接绘制，不拉伸
     // 64x32 皮肤下半部分自动留空，不会变形
     canvas.context.drawImage(skinImg, 0, 0);
+
+    if (skinImg.width === 64 && skinImg.height === 32) {
+        convert64(canvas.context, skinImg);
+    }
 
     if (loader && loader.materials && loader.materials[0]) {
         loader.materials[0].map.image = canvas.canvas;
