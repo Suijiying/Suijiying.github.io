@@ -1740,10 +1740,10 @@ $(function () {
             });
             models.rightArm.children[1].children[0].geometry.verticesNeedUpdate = true;
 
-            models.leftArm.children[0].children[0].position.set(-5.5, 18.5, 0);
-            models.rightArm.children[0].children[0].position.set(5.5, 18.5, 0);
-            models.leftArm.children[1].children[0].position.set(-5.5, 18.5, 0);
-            models.rightArm.children[1].children[0].position.set(5.5, 18.5, 0);
+            models.leftArm.children[0].children[0].position.set(-5.5, 19.5, 0);
+            models.rightArm.children[0].children[0].position.set(5.5, 19.5, 0);
+            models.leftArm.children[1].children[0].position.set(-5.5, 19.5, 0);
+            models.rightArm.children[1].children[0].position.set(5.5, 19.5, 0);
             models.leftArm.children[0].position.y = -22.5;
             models.rightArm.children[0].position.y = -22.5;
             models.leftArm.children[1].position.y = -22.5;
