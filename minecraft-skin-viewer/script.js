@@ -1652,41 +1652,41 @@ $(function () {
     });
 
     $("#file").change(function (e) {
-        let files = e.currentTarget.files;
+    let files = e.currentTarget.files;
 
-        let onload = async function () {
-            let canvas = document.querySelector("#canvas");
-            let context = canvas.getContext("2d");
+    let onload = async function () {
+        let canvas = document.querySelector("#canvas");
+        let context = canvas.getContext("2d");
 
-            context.clearRect(0, 0, 64, 64);
-            context.drawImage(this, 0, 0);
-            if (this.height < 64) {
-                convert64(context, this);
-            }
+        context.clearRect(0, 0, 64, 64);
+        
+        // 64x32 或 64x64 皮肤都直接绘制，不拉伸
+        // 64x32 下半部分自动留空
+        context.drawImage(this, 0, 0);
 
-            loader.materials[0].map.image = canvas;
-            loader.materials[0].map.needsUpdate = true;
+        loader.materials[0].map.image = canvas;
+        loader.materials[0].map.needsUpdate = true;
 
-            let material2 = loader.materials[0].clone();
-            let alpha = await createAlphaMap(canvas, 1, BBModelLoader.alphaByAlpha);
-            material2.alphaMap = alpha;
-            material2.transparent = true;
-            loader.materials[1] = material2;
+        let material2 = loader.materials[0].clone();
+        let alpha = await createAlphaMap(canvas, 1, BBModelLoader.alphaByAlpha);
+        material2.alphaMap = alpha;
+        material2.transparent = true;
+        loader.materials[1] = material2;
 
-            texture_changed = true;
+        texture_changed = true;
+    };
+
+    if (files.length && files[0].type.match('image.*')) {
+        let fileRdr = new FileReader();
+        fileRdr.self = this;
+        fileRdr.onload = function () {
+            let img = new Image();
+            img.onload = onload;
+            img.src = this.result;
         };
-
-        if (files.length && files[0].type.match('image.*')) {
-            let fileRdr = new FileReader();
-            fileRdr.self = this;
-            fileRdr.onload = function () {
-                let img = new Image();
-                img.onload = onload;
-                img.src = this.result;
-            };
-            fileRdr.readAsDataURL(files[0]);
-        }
-    });
+        fileRdr.readAsDataURL(files[0]);
+    }
+});
 
     $("#isAlex").change(function () {
 
@@ -1866,29 +1866,6 @@ $(function () {
         }
     });
 
-    let convert64 = function (context, img) {
-        let m = val => Math.floor(val * (img.width / 64));
-
-        context.translate(img.width, 0);
-        context.scale(-1, 1);
-        context.drawImage(img, m(4), m(16), m(4), m(4), m(40), m(48), m(4), m(4));
-        context.drawImage(img, m(8), m(16), m(4), m(4), m(36), m(48), m(4), m(4));
-        context.drawImage(img, m(0), m(20), m(4), m(12), m(44), m(52), m(4), m(12));
-        context.drawImage(img, m(4), m(20), m(4), m(12), m(40), m(52), m(4), m(12));
-        context.drawImage(img, m(8), m(20), m(4), m(12), m(36), m(52), m(4), m(12));
-        context.drawImage(img, m(12), m(20), m(4), m(12), m(32), m(52), m(4), m(12));
-
-        context.drawImage(img, m(44), m(16), m(4), m(4), m(24), m(48), m(4), m(4));
-        context.drawImage(img, m(48), m(16), m(4), m(4), m(20), m(48), m(4), m(4));
-        context.drawImage(img, m(40), m(20), m(4), m(12), m(28), m(52), m(4), m(12));
-        context.drawImage(img, m(44), m(20), m(4), m(12), m(24), m(52), m(4), m(12));
-        context.drawImage(img, m(48), m(20), m(4), m(12), m(20), m(52), m(4), m(12));
-        context.drawImage(img, m(52), m(20), m(4), m(12), m(16), m(52), m(4), m(12));
-
-        context.restore(0, 0);
-        context.resetTransform();
-    };
-
     const scene = new THREE.Scene();
 
     let pos_x = 0,
@@ -1907,10 +1884,6 @@ $(function () {
         canvas.canvas.setAttribute("id", "canvas");
         $(canvas.canvas).appendTo("#thumb");
         tex_canvas = canvas;
-
-        if (img.height < 64) {
-            convert64(canvas.context, img);
-        }
 
         loader = new BBModelLoader({
             filename: json_url,
