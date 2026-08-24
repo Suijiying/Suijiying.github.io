@@ -2304,41 +2304,78 @@ $(function() {
     }
 
     function applySkinTexture(skinImg) {
-        var canvas = createCanvas(64, 64);
-        canvas.context.drawImage(skinImg, 0, 0, 64, 64);
+    // 确保画布是 64x64
+    var canvas = createCanvas(64, 64);
+    var ctx = canvas.context;
 
-        if (loader && loader.materials && loader.materials[0]) {
-            loader.materials[0].map.image = canvas.canvas;
-            loader.materials[0].map.needsUpdate = true;
+    // 清空画布
+    ctx.clearRect(0, 0, 64, 64);
 
-            if (loader.materials[1]) {
-                var material2 = loader.materials[0].clone();
-                createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
-                    material2.alphaMap = alphaMap;
-                    material2.transparent = true;
-                    loader.materials[1] = material2;
+    // 判断皮肤类型
+    if (skinImg.height === 32) {
+        // ==========================================
+        // 旧版 64×32 皮肤 → 转换为 64×64
+        // ==========================================
 
-                    Object.keys(loader.parts).forEach(function(key) {
-                        var mesh = loader.parts[key].children[1].children[0];
-                        if (mesh) {
-                            mesh.material = loader.materials;
-                        }
-                    });
-                });
-            }
+        // 1. 绘制皮肤到上半部分 (0-32)
+        ctx.drawImage(skinImg, 0, 0, 64, 32, 0, 0, 64, 32);
 
-            texture_changed = true;
+        // 2. 复制上半部分到下半部分作为覆盖层
+        // 头部 → 帽子层 (0,0-8,8) → (0,32-8,40)
+        ctx.drawImage(skinImg, 0, 0, 8, 8, 0, 32, 8, 8);
+        // 身体 → 外套层 (16,16-24,28) → (16,48-24,60)
+        ctx.drawImage(skinImg, 16, 16, 8, 12, 16, 48, 8, 12);
+        // 左臂 → 左袖层 (44,16-48,28) → (44,48-48,60)
+        ctx.drawImage(skinImg, 44, 16, 4, 12, 44, 48, 4, 12);
+        // 右臂 → 右袖层 (40,16-44,28) → (40,48-44,60)
+        ctx.drawImage(skinImg, 40, 16, 4, 12, 40, 48, 4, 12);
+        // 左腿 → 左裤层 (4,16-8,28) → (4,48-8,60)
+        ctx.drawImage(skinImg, 4, 16, 4, 12, 4, 48, 4, 12);
+        // 右腿 → 右裤层 (0,16-4,28) → (0,48-4,60)
+        ctx.drawImage(skinImg, 0, 16, 4, 12, 0, 48, 4, 12);
 
-            var thumbCanvas = document.querySelector('#thumb canvas');
-            if (thumbCanvas) {
-                var ctx = thumbCanvas.getContext('2d');
-                ctx.clearRect(0, 0, 64, 64);
-                ctx.drawImage(skinImg, 0, 0, 64, 64);
-            }
-        } else {
-            $statusMsg.text('⚠️ Model not loaded yet, please wait.').css('color', '#f39c12');
-        }
+    } else {
+        // ==========================================
+        // 新版 64×64 皮肤：直接绘制
+        // ==========================================
+        ctx.drawImage(skinImg, 0, 0, 64, 64);
     }
+
+    // 应用到模型纹理
+    if (loader && loader.materials && loader.materials[0]) {
+        loader.materials[0].map.image = canvas.canvas;
+        loader.materials[0].map.needsUpdate = true;
+
+        // 如果有透明层（覆盖层），也要更新
+        if (loader.materials[1]) {
+            var material2 = loader.materials[0].clone();
+            createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
+                material2.alphaMap = alphaMap;
+                material2.transparent = true;
+                loader.materials[1] = material2;
+
+                Object.keys(loader.parts).forEach(function(key) {
+                    var mesh = loader.parts[key].children[1].children[0];
+                    if (mesh) {
+                        mesh.material = loader.materials;
+                    }
+                });
+            });
+        }
+
+        texture_changed = true;
+
+        // 更新缩略图
+        var thumbCanvas = document.querySelector('#thumb canvas');
+        if (thumbCanvas) {
+            var ctx2 = thumbCanvas.getContext('2d');
+            ctx2.clearRect(0, 0, 64, 64);
+            ctx2.drawImage(skinImg, 0, 0, 64, 64);
+        }
+    } else {
+        console.warn('⚠️ Model not loaded yet, please wait.');
+    }
+}
 
     $loadSkinBtn.on('click', function() {
         var name = $playerName.val().trim();
