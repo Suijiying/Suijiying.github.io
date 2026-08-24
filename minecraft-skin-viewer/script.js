@@ -654,7 +654,6 @@ BBModelLoader.prototype.loadEntity = function (onload) {
                             let inflate = (element.inflate ? element.inflate : 0);
 
                             let mesh = new THREE.Mesh(
-                                let mesh = new THREE.Mesh(
     new THREE.MCBoxGeometry(
         size[0], size[1], size[2],
         inflate,
