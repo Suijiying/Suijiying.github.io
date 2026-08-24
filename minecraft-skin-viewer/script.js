@@ -1698,16 +1698,28 @@ $(function () {
         }
 
         let setUVS = function (mesh, uvs, overlay) {
-            for (let i = 0; i < mesh.geometry.faceVertexUvs[0].length; i++) {
-                let face = mesh.geometry.faceVertexUvs[0][i];
-                for (let j = 0; j < 3; j++) {
-                    face[j].x = (uvs[i][j].x + (overlay == 2 ? 16 : 0)) / 64;
-                    face[j].y = (uvs[i][j].y - (overlay == 1 ? 16 : 0)) / 64;
-                    face[j].z = (uvs[i][j].z + (overlay == 2 ? 16 : 0)) / 64;
-                }
+    for (let i = 0; i < mesh.geometry.faceVertexUvs[0].length; i++) {
+        let face = mesh.geometry.faceVertexUvs[0][i];
+        for (let j = 0; j < 3; j++) {
+            // overlay=1: 覆盖层（帽子、外套、袖子、裤子）
+            // overlay=2: 右臂覆盖层
+            if (overlay == 1) {
+                // 覆盖层：y 坐标下移 16 像素（从上半部分移到下半部分）
+                face[j].x = uvs[i][j].x / 64;
+                face[j].y = (uvs[i][j].y + 16) / 64;
+            } else if (overlay == 2) {
+                // 右臂覆盖层：x 坐标右移 16 像素，y 下移 16 像素
+                face[j].x = (uvs[i][j].x + 16) / 64;
+                face[j].y = (uvs[i][j].y + 16) / 64;
+            } else {
+                // 实心层：直接映射
+                face[j].x = uvs[i][j].x / 64;
+                face[j].y = uvs[i][j].y / 64;
             }
-            mesh.geometry.uvsNeedUpdate = true;
-        };
+        }
+    }
+    mesh.geometry.uvsNeedUpdate = true;
+};
 
         let checked = $("#isAlex").prop("checked");
         if (checked) {
