@@ -2,7 +2,7 @@
 // 1. THREE.MCBoxGeometry by Urushibara(pneuma01)
 // ============================================================
 
-THREE.MCBoxGeometry = function (width, height, depth, inflate, uvX, uvY, uvW, uvH, uvFlip, doubleFace, nocheck, beta) {
+THREE.MCBoxGeometry = function (width, height, depth, inflate, uvX, uvY, uvW, uvH, uvFlip, doubleFace, nocheck, beta, isHat) {
     THREE.Geometry.call(this);
     this.faceVertexUvs[0] = [];
 
@@ -13,16 +13,17 @@ THREE.MCBoxGeometry = function (width, height, depth, inflate, uvX, uvY, uvW, uv
     uvX = uvX ? uvX : 0;
     uvY = uvY ? uvY : 0;
 
-    let w = width,
-        h = height,
-        d = depth,
-        x = width ? width + inflate : 0,
-        y = height ? height + inflate : 0,
-        z = depth ? depth + inflate : 0,
-        tw = uvW ? uvW : w * 2 + d * 2,
-        th = uvH ? uvH : d + h,
-        p,
-        color = {};
+   let w = width,
+    h = height,
+    d = depth,
+    finalInflate = isHat ? inflate * 2 : inflate,
+    x = width ? width + finalInflate : 0,
+    y = height ? height + finalInflate : 0,
+    z = depth ? depth + finalInflate : 0,
+    tw = uvW ? uvW : w * 2 + d * 2,
+    th = uvH ? uvH : d + h,
+    p,
+    color = {};
 
     let UVs = {
         right: [{ "x": uvX + d + w, "y": uvY + d }],
@@ -653,9 +654,14 @@ BBModelLoader.prototype.loadEntity = function (onload) {
                             let inflate = (element.inflate ? element.inflate : 0);
 
                             let mesh = new THREE.Mesh(
-                                new THREE.MCBoxGeometry(size[0], size[1], size[2], inflate, uv_offset[0], uv_offset[1], data.resolution.width, data.resolution.height, flip, this.doubleFace, !this.depthcheck, this.isBetaModel),
-                                this.materials
-                            );
+                                new THREE.MCBoxGeometry(
+    size[0], size[1], size[2],
+    inflate,
+    uv_offset[0], uv_offset[1],
+    data.resolution.width, data.resolution.height,
+    flip, this.doubleFace, !this.depthcheck, this.isBetaModel,
+    (element.name === "hat" || element.name === "hat.overlay")  // ← 新增：标记 hat 块
+);
 
                             mesh.receiveShadow = this.receiveShadow;
                             mesh.castShadow = this.receiveShadow;
