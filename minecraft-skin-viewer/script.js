@@ -1698,28 +1698,16 @@ $(function () {
         }
 
         let setUVS = function (mesh, uvs, overlay) {
-    for (let i = 0; i < mesh.geometry.faceVertexUvs[0].length; i++) {
-        let face = mesh.geometry.faceVertexUvs[0][i];
-        for (let j = 0; j < 3; j++) {
-            // overlay=1: 覆盖层（帽子、外套、袖子、裤子）
-            // overlay=2: 右臂覆盖层
-            if (overlay == 1) {
-                // 覆盖层：y 坐标下移 16 像素（从上半部分移到下半部分）
-                face[j].x = uvs[i][j].x / 64;
-                face[j].y = (uvs[i][j].y + 16) / 64;
-            } else if (overlay == 2) {
-                // 右臂覆盖层：x 坐标右移 16 像素，y 下移 16 像素
-                face[j].x = (uvs[i][j].x + 16) / 64;
-                face[j].y = (uvs[i][j].y + 16) / 64;
-            } else {
-                // 实心层：直接映射
-                face[j].x = uvs[i][j].x / 64;
-                face[j].y = uvs[i][j].y / 64;
+            for (let i = 0; i < mesh.geometry.faceVertexUvs[0].length; i++) {
+                let face = mesh.geometry.faceVertexUvs[0][i];
+                for (let j = 0; j < 3; j++) {
+                    face[j].x = (uvs[i][j].x + (overlay == 2 ? 16 : 0)) / 64;
+                    face[j].y = (uvs[i][j].y - (overlay == 1 ? 16 : 0)) / 64;
+                    face[j].z = (uvs[i][j].z + (overlay == 2 ? 16 : 0)) / 64;
+                }
             }
-        }
-    }
-    mesh.geometry.uvsNeedUpdate = true;
-};
+            mesh.geometry.uvsNeedUpdate = true;
+        };
 
         let checked = $("#isAlex").prop("checked");
         if (checked) {
@@ -2316,78 +2304,41 @@ $(function() {
     }
 
     function applySkinTexture(skinImg) {
-    // 确保画布是 64x64
-    var canvas = createCanvas(64, 64);
-    var ctx = canvas.context;
+        var canvas = createCanvas(64, 64);
+        canvas.context.drawImage(skinImg, 0, 0, 64, 64);
 
-    // 清空画布
-    ctx.clearRect(0, 0, 64, 64);
+        if (loader && loader.materials && loader.materials[0]) {
+            loader.materials[0].map.image = canvas.canvas;
+            loader.materials[0].map.needsUpdate = true;
 
-    // 判断皮肤类型
-    if (skinImg.height === 32) {
-        // ==========================================
-        // 旧版 64×32 皮肤 → 转换为 64×64
-        // ==========================================
+            if (loader.materials[1]) {
+                var material2 = loader.materials[0].clone();
+                createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
+                    material2.alphaMap = alphaMap;
+                    material2.transparent = true;
+                    loader.materials[1] = material2;
 
-        // 1. 绘制皮肤到上半部分 (0-32)
-        ctx.drawImage(skinImg, 0, 0, 64, 32, 0, 0, 64, 32);
-
-        // 2. 复制上半部分到下半部分作为覆盖层
-        // 头部 → 帽子层 (0,0-8,8) → (0,32-8,40)
-        ctx.drawImage(skinImg, 0, 0, 8, 8, 0, 32, 8, 8);
-        // 身体 → 外套层 (16,16-24,28) → (16,48-24,60)
-        ctx.drawImage(skinImg, 16, 16, 8, 12, 16, 48, 8, 12);
-        // 左臂 → 左袖层 (44,16-48,28) → (44,48-48,60)
-        ctx.drawImage(skinImg, 44, 16, 4, 12, 44, 48, 4, 12);
-        // 右臂 → 右袖层 (40,16-44,28) → (40,48-44,60)
-        ctx.drawImage(skinImg, 40, 16, 4, 12, 40, 48, 4, 12);
-        // 左腿 → 左裤层 (4,16-8,28) → (4,48-8,60)
-        ctx.drawImage(skinImg, 4, 16, 4, 12, 4, 48, 4, 12);
-        // 右腿 → 右裤层 (0,16-4,28) → (0,48-4,60)
-        ctx.drawImage(skinImg, 0, 16, 4, 12, 0, 48, 4, 12);
-
-    } else {
-        // ==========================================
-        // 新版 64×64 皮肤：直接绘制
-        // ==========================================
-        ctx.drawImage(skinImg, 0, 0, 64, 64);
-    }
-
-    // 应用到模型纹理
-    if (loader && loader.materials && loader.materials[0]) {
-        loader.materials[0].map.image = canvas.canvas;
-        loader.materials[0].map.needsUpdate = true;
-
-        // 如果有透明层（覆盖层），也要更新
-        if (loader.materials[1]) {
-            var material2 = loader.materials[0].clone();
-            createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
-                material2.alphaMap = alphaMap;
-                material2.transparent = true;
-                loader.materials[1] = material2;
-
-                Object.keys(loader.parts).forEach(function(key) {
-                    var mesh = loader.parts[key].children[1].children[0];
-                    if (mesh) {
-                        mesh.material = loader.materials;
-                    }
+                    Object.keys(loader.parts).forEach(function(key) {
+                        var mesh = loader.parts[key].children[1].children[0];
+                        if (mesh) {
+                            mesh.material = loader.materials;
+                        }
+                    });
                 });
-            });
-        }
+            }
 
-        texture_changed = true;
+            texture_changed = true;
 
-        // 更新缩略图
-        var thumbCanvas = document.querySelector('#thumb canvas');
-        if (thumbCanvas) {
-            var ctx2 = thumbCanvas.getContext('2d');
-            ctx2.clearRect(0, 0, 64, 64);
-            ctx2.drawImage(skinImg, 0, 0, 64, 64);
+            var thumbCanvas = document.querySelector('#thumb canvas');
+            if (thumbCanvas) {
+                var ctx = thumbCanvas.getContext('2d');
+                ctx.clearRect(0, 0, 64, 64);
+                ctx.drawImage(skinImg, 0, 0, 64, 64);
+            }
+        } else {
+            $statusMsg.text('⚠️ Model not loaded yet, please wait.').css('color', '#f39c12');
         }
-    } else {
-        console.warn('⚠️ Model not loaded yet, please wait.');
     }
-}
 
     $loadSkinBtn.on('click', function() {
         var name = $playerName.val().trim();
