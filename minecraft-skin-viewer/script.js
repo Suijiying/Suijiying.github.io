@@ -1921,13 +1921,40 @@ $(function () {
         }
 
         loader = new BBModelLoader({
-            filename: json_url,
-            texture_name: ["#canvas"],
-            side: THREE.DoubleSide,
-        }).loadEntity(function (object, parts) {
-            main_object = object;
-            models = parts;
+    filename: json_url,
+    texture_name: ["#canvas"],
+    side: THREE.DoubleSide,
+}).loadEntity(function (object, parts) {
+    main_object = object;
+    models = parts;
 
+    // 找到 head 组下的 hat 块
+    if (models.head && models.head.children && models.head.children[1]) {
+    var mesh = models.head.children[1];
+    if (mesh.isMesh && mesh.geometry) {
+        var positions = mesh.geometry.attributes.position;
+        if (positions) {
+            var array = positions.array;
+            var center = new THREE.Vector3();
+            mesh.geometry.computeBoundingBox();
+            var bbox = mesh.geometry.boundingBox;
+            if (bbox) {
+                bbox.getCenter(center);
+                var scale = 1 + 0.5; // inflate 翻倍
+                for (var i = 0; i < array.length; i += 3) {
+                    var x = array[i] - center.x;
+                    var y = array[i+1] - center.y;
+                    var z = array[i+2] - center.z;
+                    array[i] = center.x + x * scale;
+                    array[i+1] = center.y + y * scale;
+                    array[i+2] = center.z + z * scale;
+                }
+                positions.needsUpdate = true;
+                mesh.geometry.computeVertexNormals();
+            }
+        }
+    }
+}
             let material2 = loader.materials[0].clone();
             loader.materials[1] = material2;
             Object.keys(loader.parts).forEach(key => {
