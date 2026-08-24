@@ -654,13 +654,16 @@ BBModelLoader.prototype.loadEntity = function (onload) {
                             let inflate = (element.inflate ? element.inflate : 0);
 
                             let mesh = new THREE.Mesh(
-                                new THREE.MCBoxGeometry(
-    size[0], size[1], size[2],
-    inflate,
-    uv_offset[0], uv_offset[1],
-    data.resolution.width, data.resolution.height,
-    flip, this.doubleFace, !this.depthcheck, this.isBetaModel,
-    (element.name === "hat" || element.name === "hat.overlay")  // ← 新增：标记 hat 块
+                                let mesh = new THREE.Mesh(
+    new THREE.MCBoxGeometry(
+        size[0], size[1], size[2],
+        inflate,
+        uv_offset[0], uv_offset[1],
+        data.resolution.width, data.resolution.height,
+        flip, this.doubleFace, !this.depthcheck, this.isBetaModel,
+        (element.name === "hat" || element.name === "hat.overlay")
+    ),
+    this.materials
 );
 
                             mesh.receiveShadow = this.receiveShadow;
