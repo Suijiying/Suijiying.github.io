@@ -2277,41 +2277,45 @@ $(function() {
     }
 
     function applySkinTexture(skinImg) {
-        var canvas = createCanvas(64, 64);
-        canvas.context.drawImage(skinImg, 0, 0, 64, 64);
+    var canvas = createCanvas(64, 64);
+    canvas.context.clearRect(0, 0, 64, 64);
+    
+    // 直接绘制，不拉伸
+    // 64x32 皮肤下半部分自动留空，不会变形
+    canvas.context.drawImage(skinImg, 0, 0);
 
-        if (loader && loader.materials && loader.materials[0]) {
-            loader.materials[0].map.image = canvas.canvas;
-            loader.materials[0].map.needsUpdate = true;
+    if (loader && loader.materials && loader.materials[0]) {
+        loader.materials[0].map.image = canvas.canvas;
+        loader.materials[0].map.needsUpdate = true;
 
-            if (loader.materials[1]) {
-                var material2 = loader.materials[0].clone();
-                createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
-                    material2.alphaMap = alphaMap;
-                    material2.transparent = true;
-                    loader.materials[1] = material2;
+        if (loader.materials[1]) {
+            var material2 = loader.materials[0].clone();
+            createAlphaMap(canvas.canvas, 1, BBModelLoader.alphaByAlpha).then(function(alphaMap) {
+                material2.alphaMap = alphaMap;
+                material2.transparent = true;
+                loader.materials[1] = material2;
 
-                    Object.keys(loader.parts).forEach(function(key) {
-                        var mesh = loader.parts[key].children[1].children[0];
-                        if (mesh) {
-                            mesh.material = loader.materials;
-                        }
-                    });
+                Object.keys(loader.parts).forEach(function(key) {
+                    var mesh = loader.parts[key].children[1].children[0];
+                    if (mesh) {
+                        mesh.material = loader.materials;
+                    }
                 });
-            }
-
-            texture_changed = true;
-
-            var thumbCanvas = document.querySelector('#thumb canvas');
-            if (thumbCanvas) {
-                var ctx = thumbCanvas.getContext('2d');
-                ctx.clearRect(0, 0, 64, 64);
-                ctx.drawImage(skinImg, 0, 0, 64, 64);
-            }
-        } else {
-            $statusMsg.text('⚠️ Model not loaded yet, please wait.').css('color', '#f39c12');
+            });
         }
+
+        texture_changed = true;
+
+        var thumbCanvas = document.querySelector('#thumb canvas');
+        if (thumbCanvas) {
+            var ctx = thumbCanvas.getContext('2d');
+            ctx.clearRect(0, 0, 64, 64);
+            ctx.drawImage(skinImg, 0, 0);
+        }
+    } else {
+        $statusMsg.text('⚠️ Model not loaded yet, please wait.').css('color', '#f39c12');
     }
+}
 
     $loadSkinBtn.on('click', function() {
         var name = $playerName.val().trim();
